@@ -1,0 +1,16 @@
+This is the source code for the tool hold on naturalre.ml
+
+The web application is built upon the Django Framework which is released under
+the Django Trademark License. 
+
+You may go to the ./src to build this tool.
+
+To build this tool, please make sure you have all the dependencies by
+```
+pip install -r requirements.txt
+```
+
+To run this tool, simply start the Django project by
+```
+python manage.py runserver
+```

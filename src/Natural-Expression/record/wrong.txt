@@ -1,0 +1,10 @@
+part1 does not contain letter 'e'
+part1 does not contain letter 'e'
+repeat a several times
+can you repeat a several times
+repeat a several times
+repeat a several time
+contain only the letters "agde"
+part1 contain the word "dance"
+part1 contain the word "dance"
+part2 has words that contain 3 vowels

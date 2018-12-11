@@ -1,0 +1,1434 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    ANYTHING
+
+Grammar
+
+Rule 0     S' -> assign
+Rule 1     assign -> LET NAME BE expr
+Rule 2     expr -> REPEAT NUMBER expr
+Rule 3     expr -> REPEAT ZEROMORE expr
+Rule 4     expr -> REPEAT ONEMORE expr
+Rule 5     expr -> expr AND expr
+Rule 6     expr -> expr OR expr
+Rule 7     expr -> CONCAT expr expr
+Rule 8     expr -> NOT expr
+Rule 9     expr -> ONEOF NUMBER TO NUMBER
+Rule 10    expr -> term
+Rule 11    expr -> WORD END expr
+Rule 12    expr -> WORD HAS NUMBER term
+Rule 13    expr -> WORD BEGIN expr
+Rule 14    term -> NAME
+Rule 15    term -> DIGIT
+Rule 16    term -> CHAR
+Rule 17    term -> LETTER
+Rule 18    term -> UPCASE
+Rule 19    term -> LOWCASE
+Rule 20    term -> WORD
+Rule 21    term -> CONST
+Rule 22    term -> POINT
+Rule 23    term -> BLANK
+Rule 24    term -> ONEOF CONST
+Rule 25    term -> ONEZERO term
+
+Terminals, with rules where they appear
+
+AND                  : 5
+ANYTHING             : 
+BE                   : 1
+BEGIN                : 13
+BLANK                : 23
+CHAR                 : 16
+CONCAT               : 7
+CONST                : 21 24
+DIGIT                : 15
+END                  : 11
+HAS                  : 12
+LET                  : 1
+LETTER               : 17
+LOWCASE              : 19
+NAME                 : 1 14
+NOT                  : 8
+NUMBER               : 2 9 9 12
+ONEMORE              : 4
+ONEOF                : 9 24
+ONEZERO              : 25
+OR                   : 6
+POINT                : 22
+REPEAT               : 2 3 4
+TO                   : 9
+UPCASE               : 18
+WORD                 : 11 12 13 20
+ZEROMORE             : 3
+error                : 
+
+Nonterminals, with rules where they appear
+
+assign               : 0
+expr                 : 1 2 3 4 5 5 6 6 7 7 8 11 13
+term                 : 10 12 25
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . assign
+    (1) assign -> . LET NAME BE expr
+
+    LET             shift and go to state 2
+
+    assign                         shift and go to state 1
+
+state 1
+
+    (0) S' -> assign .
+
+
+
+state 2
+
+    (1) assign -> LET . NAME BE expr
+
+    NAME            shift and go to state 3
+
+
+state 3
+
+    (1) assign -> LET NAME . BE expr
+
+    BE              shift and go to state 4
+
+
+state 4
+
+    (1) assign -> LET NAME BE . expr
+    (2) expr -> . REPEAT NUMBER expr
+    (3) expr -> . REPEAT ZEROMORE expr
+    (4) expr -> . REPEAT ONEMORE expr
+    (5) expr -> . expr AND expr
+    (6) expr -> . expr OR expr
+    (7) expr -> . CONCAT expr expr
+    (8) expr -> . NOT expr
+    (9) expr -> . ONEOF NUMBER TO NUMBER
+    (10) expr -> . term
+    (11) expr -> . WORD END expr
+    (12) expr -> . WORD HAS NUMBER term
+    (13) expr -> . WORD BEGIN expr
+    (14) term -> . NAME
+    (15) term -> . DIGIT
+    (16) term -> . CHAR
+    (17) term -> . LETTER
+    (18) term -> . UPCASE
+    (19) term -> . LOWCASE
+    (20) term -> . WORD
+    (21) term -> . CONST
+    (22) term -> . POINT
+    (23) term -> . BLANK
+    (24) term -> . ONEOF CONST
+    (25) term -> . ONEZERO term
+
+    REPEAT          shift and go to state 7
+    CONCAT          shift and go to state 8
+    NOT             shift and go to state 9
+    ONEOF           shift and go to state 10
+    WORD            shift and go to state 12
+    NAME            shift and go to state 5
+    DIGIT           shift and go to state 13
+    CHAR            shift and go to state 14
+    LETTER          shift and go to state 15
+    UPCASE          shift and go to state 16
+    LOWCASE         shift and go to state 17
+    CONST           shift and go to state 18
+    POINT           shift and go to state 19
+    BLANK           shift and go to state 20
+    ONEZERO         shift and go to state 21
+
+    expr                           shift and go to state 6
+    term                           shift and go to state 11
+
+state 5
+
+    (14) term -> NAME .
+
+    AND             reduce using rule 14 (term -> NAME .)
+    OR              reduce using rule 14 (term -> NAME .)
+    $end            reduce using rule 14 (term -> NAME .)
+    REPEAT          reduce using rule 14 (term -> NAME .)
+    CONCAT          reduce using rule 14 (term -> NAME .)
+    NOT             reduce using rule 14 (term -> NAME .)
+    ONEOF           reduce using rule 14 (term -> NAME .)
+    WORD            reduce using rule 14 (term -> NAME .)
+    NAME            reduce using rule 14 (term -> NAME .)
+    DIGIT           reduce using rule 14 (term -> NAME .)
+    CHAR            reduce using rule 14 (term -> NAME .)
+    LETTER          reduce using rule 14 (term -> NAME .)
+    UPCASE          reduce using rule 14 (term -> NAME .)
+    LOWCASE         reduce using rule 14 (term -> NAME .)
+    CONST           reduce using rule 14 (term -> NAME .)
+    POINT           reduce using rule 14 (term -> NAME .)
+    BLANK           reduce using rule 14 (term -> NAME .)
+    ONEZERO         reduce using rule 14 (term -> NAME .)
+
+
+state 6
+
+    (1) assign -> LET NAME BE expr .
+    (5) expr -> expr . AND expr
+    (6) expr -> expr . OR expr
+
+    $end            reduce using rule 1 (assign -> LET NAME BE expr .)
+    AND             shift and go to state 22
+    OR              shift and go to state 23
+
+
+state 7
+
+    (2) expr -> REPEAT . NUMBER expr
+    (3) expr -> REPEAT . ZEROMORE expr
+    (4) expr -> REPEAT . ONEMORE expr
+
+    NUMBER          shift and go to state 24
+    ZEROMORE        shift and go to state 25
+    ONEMORE         shift and go to state 26
+
+
+state 8
+
+    (7) expr -> CONCAT . expr expr
+    (2) expr -> . REPEAT NUMBER expr
+    (3) expr -> . REPEAT ZEROMORE expr
+    (4) expr -> . REPEAT ONEMORE expr
+    (5) expr -> . expr AND expr
+    (6) expr -> . expr OR expr
+    (7) expr -> . CONCAT expr expr
+    (8) expr -> . NOT expr
+    (9) expr -> . ONEOF NUMBER TO NUMBER
+    (10) expr -> . term
+    (11) expr -> . WORD END expr
+    (12) expr -> . WORD HAS NUMBER term
+    (13) expr -> . WORD BEGIN expr
+    (14) term -> . NAME
+    (15) term -> . DIGIT
+    (16) term -> . CHAR
+    (17) term -> . LETTER
+    (18) term -> . UPCASE
+    (19) term -> . LOWCASE
+    (20) term -> . WORD
+    (21) term -> . CONST
+    (22) term -> . POINT
+    (23) term -> . BLANK
+    (24) term -> . ONEOF CONST
+    (25) term -> . ONEZERO term
+
+    REPEAT          shift and go to state 7
+    CONCAT          shift and go to state 8
+    NOT             shift and go to state 9
+    ONEOF           shift and go to state 10
+    WORD            shift and go to state 12
+    NAME            shift and go to state 5
+    DIGIT           shift and go to state 13
+    CHAR            shift and go to state 14
+    LETTER          shift and go to state 15
+    UPCASE          shift and go to state 16
+    LOWCASE         shift and go to state 17
+    CONST           shift and go to state 18
+    POINT           shift and go to state 19
+    BLANK           shift and go to state 20
+    ONEZERO         shift and go to state 21
+
+    expr                           shift and go to state 27
+    term                           shift and go to state 11
+
+state 9
+
+    (8) expr -> NOT . expr
+    (2) expr -> . REPEAT NUMBER expr
+    (3) expr -> . REPEAT ZEROMORE expr
+    (4) expr -> . REPEAT ONEMORE expr
+    (5) expr -> . expr AND expr
+    (6) expr -> . expr OR expr
+    (7) expr -> . CONCAT expr expr
+    (8) expr -> . NOT expr
+    (9) expr -> . ONEOF NUMBER TO NUMBER
+    (10) expr -> . term
+    (11) expr -> . WORD END expr
+    (12) expr -> . WORD HAS NUMBER term
+    (13) expr -> . WORD BEGIN expr
+    (14) term -> . NAME
+    (15) term -> . DIGIT
+    (16) term -> . CHAR
+    (17) term -> . LETTER
+    (18) term -> . UPCASE
+    (19) term -> . LOWCASE
+    (20) term -> . WORD
+    (21) term -> . CONST
+    (22) term -> . POINT
+    (23) term -> . BLANK
+    (24) term -> . ONEOF CONST
+    (25) term -> . ONEZERO term
+
+    REPEAT          shift and go to state 7
+    CONCAT          shift and go to state 8
+    NOT             shift and go to state 9
+    ONEOF           shift and go to state 10
+    WORD            shift and go to state 12
+    NAME            shift and go to state 5
+    DIGIT           shift and go to state 13
+    CHAR            shift and go to state 14
+    LETTER          shift and go to state 15
+    UPCASE          shift and go to state 16
+    LOWCASE         shift and go to state 17
+    CONST           shift and go to state 18
+    POINT           shift and go to state 19
+    BLANK           shift and go to state 20
+    ONEZERO         shift and go to state 21
+
+    expr                           shift and go to state 28
+    term                           shift and go to state 11
+
+state 10
+
+    (9) expr -> ONEOF . NUMBER TO NUMBER
+    (24) term -> ONEOF . CONST
+
+    NUMBER          shift and go to state 29
+    CONST           shift and go to state 30
+
+
+state 11
+
+    (10) expr -> term .
+
+    AND             reduce using rule 10 (expr -> term .)
+    OR              reduce using rule 10 (expr -> term .)
+    $end            reduce using rule 10 (expr -> term .)
+    REPEAT          reduce using rule 10 (expr -> term .)
+    CONCAT          reduce using rule 10 (expr -> term .)
+    NOT             reduce using rule 10 (expr -> term .)
+    ONEOF           reduce using rule 10 (expr -> term .)
+    WORD            reduce using rule 10 (expr -> term .)
+    NAME            reduce using rule 10 (expr -> term .)
+    DIGIT           reduce using rule 10 (expr -> term .)
+    CHAR            reduce using rule 10 (expr -> term .)
+    LETTER          reduce using rule 10 (expr -> term .)
+    UPCASE          reduce using rule 10 (expr -> term .)
+    LOWCASE         reduce using rule 10 (expr -> term .)
+    CONST           reduce using rule 10 (expr -> term .)
+    POINT           reduce using rule 10 (expr -> term .)
+    BLANK           reduce using rule 10 (expr -> term .)
+    ONEZERO         reduce using rule 10 (expr -> term .)
+
+
+state 12
+
+    (11) expr -> WORD . END expr
+    (12) expr -> WORD . HAS NUMBER term
+    (13) expr -> WORD . BEGIN expr
+    (20) term -> WORD .
+
+    END             shift and go to state 31
+    HAS             shift and go to state 32
+    BEGIN           shift and go to state 33
+    AND             reduce using rule 20 (term -> WORD .)
+    OR              reduce using rule 20 (term -> WORD .)
+    $end            reduce using rule 20 (term -> WORD .)
+    REPEAT          reduce using rule 20 (term -> WORD .)
+    CONCAT          reduce using rule 20 (term -> WORD .)
+    NOT             reduce using rule 20 (term -> WORD .)
+    ONEOF           reduce using rule 20 (term -> WORD .)
+    WORD            reduce using rule 20 (term -> WORD .)
+    NAME            reduce using rule 20 (term -> WORD .)
+    DIGIT           reduce using rule 20 (term -> WORD .)
+    CHAR            reduce using rule 20 (term -> WORD .)
+    LETTER          reduce using rule 20 (term -> WORD .)
+    UPCASE          reduce using rule 20 (term -> WORD .)
+    LOWCASE         reduce using rule 20 (term -> WORD .)
+    CONST           reduce using rule 20 (term -> WORD .)
+    POINT           reduce using rule 20 (term -> WORD .)
+    BLANK           reduce using rule 20 (term -> WORD .)
+    ONEZERO         reduce using rule 20 (term -> WORD .)
+
+
+state 13
+
+    (15) term -> DIGIT .
+
+    AND             reduce using rule 15 (term -> DIGIT .)
+    OR              reduce using rule 15 (term -> DIGIT .)
+    $end            reduce using rule 15 (term -> DIGIT .)
+    REPEAT          reduce using rule 15 (term -> DIGIT .)
+    CONCAT          reduce using rule 15 (term -> DIGIT .)
+    NOT             reduce using rule 15 (term -> DIGIT .)
+    ONEOF           reduce using rule 15 (term -> DIGIT .)
+    WORD            reduce using rule 15 (term -> DIGIT .)
+    NAME            reduce using rule 15 (term -> DIGIT .)
+    DIGIT           reduce using rule 15 (term -> DIGIT .)
+    CHAR            reduce using rule 15 (term -> DIGIT .)
+    LETTER          reduce using rule 15 (term -> DIGIT .)
+    UPCASE          reduce using rule 15 (term -> DIGIT .)
+    LOWCASE         reduce using rule 15 (term -> DIGIT .)
+    CONST           reduce using rule 15 (term -> DIGIT .)
+    POINT           reduce using rule 15 (term -> DIGIT .)
+    BLANK           reduce using rule 15 (term -> DIGIT .)
+    ONEZERO         reduce using rule 15 (term -> DIGIT .)
+
+
+state 14
+
+    (16) term -> CHAR .
+
+    AND             reduce using rule 16 (term -> CHAR .)
+    OR              reduce using rule 16 (term -> CHAR .)
+    $end            reduce using rule 16 (term -> CHAR .)
+    REPEAT          reduce using rule 16 (term -> CHAR .)
+    CONCAT          reduce using rule 16 (term -> CHAR .)
+    NOT             reduce using rule 16 (term -> CHAR .)
+    ONEOF           reduce using rule 16 (term -> CHAR .)
+    WORD            reduce using rule 16 (term -> CHAR .)
+    NAME            reduce using rule 16 (term -> CHAR .)
+    DIGIT           reduce using rule 16 (term -> CHAR .)
+    CHAR            reduce using rule 16 (term -> CHAR .)
+    LETTER          reduce using rule 16 (term -> CHAR .)
+    UPCASE          reduce using rule 16 (term -> CHAR .)
+    LOWCASE         reduce using rule 16 (term -> CHAR .)
+    CONST           reduce using rule 16 (term -> CHAR .)
+    POINT           reduce using rule 16 (term -> CHAR .)
+    BLANK           reduce using rule 16 (term -> CHAR .)
+    ONEZERO         reduce using rule 16 (term -> CHAR .)
+
+
+state 15
+
+    (17) term -> LETTER .
+
+    AND             reduce using rule 17 (term -> LETTER .)
+    OR              reduce using rule 17 (term -> LETTER .)
+    $end            reduce using rule 17 (term -> LETTER .)
+    REPEAT          reduce using rule 17 (term -> LETTER .)
+    CONCAT          reduce using rule 17 (term -> LETTER .)
+    NOT             reduce using rule 17 (term -> LETTER .)
+    ONEOF           reduce using rule 17 (term -> LETTER .)
+    WORD            reduce using rule 17 (term -> LETTER .)
+    NAME            reduce using rule 17 (term -> LETTER .)
+    DIGIT           reduce using rule 17 (term -> LETTER .)
+    CHAR            reduce using rule 17 (term -> LETTER .)
+    LETTER          reduce using rule 17 (term -> LETTER .)
+    UPCASE          reduce using rule 17 (term -> LETTER .)
+    LOWCASE         reduce using rule 17 (term -> LETTER .)
+    CONST           reduce using rule 17 (term -> LETTER .)
+    POINT           reduce using rule 17 (term -> LETTER .)
+    BLANK           reduce using rule 17 (term -> LETTER .)
+    ONEZERO         reduce using rule 17 (term -> LETTER .)
+
+
+state 16
+
+    (18) term -> UPCASE .
+
+    AND             reduce using rule 18 (term -> UPCASE .)
+    OR              reduce using rule 18 (term -> UPCASE .)
+    $end            reduce using rule 18 (term -> UPCASE .)
+    REPEAT          reduce using rule 18 (term -> UPCASE .)
+    CONCAT          reduce using rule 18 (term -> UPCASE .)
+    NOT             reduce using rule 18 (term -> UPCASE .)
+    ONEOF           reduce using rule 18 (term -> UPCASE .)
+    WORD            reduce using rule 18 (term -> UPCASE .)
+    NAME            reduce using rule 18 (term -> UPCASE .)
+    DIGIT           reduce using rule 18 (term -> UPCASE .)
+    CHAR            reduce using rule 18 (term -> UPCASE .)
+    LETTER          reduce using rule 18 (term -> UPCASE .)
+    UPCASE          reduce using rule 18 (term -> UPCASE .)
+    LOWCASE         reduce using rule 18 (term -> UPCASE .)
+    CONST           reduce using rule 18 (term -> UPCASE .)
+    POINT           reduce using rule 18 (term -> UPCASE .)
+    BLANK           reduce using rule 18 (term -> UPCASE .)
+    ONEZERO         reduce using rule 18 (term -> UPCASE .)
+
+
+state 17
+
+    (19) term -> LOWCASE .
+
+    AND             reduce using rule 19 (term -> LOWCASE .)
+    OR              reduce using rule 19 (term -> LOWCASE .)
+    $end            reduce using rule 19 (term -> LOWCASE .)
+    REPEAT          reduce using rule 19 (term -> LOWCASE .)
+    CONCAT          reduce using rule 19 (term -> LOWCASE .)
+    NOT             reduce using rule 19 (term -> LOWCASE .)
+    ONEOF           reduce using rule 19 (term -> LOWCASE .)
+    WORD            reduce using rule 19 (term -> LOWCASE .)
+    NAME            reduce using rule 19 (term -> LOWCASE .)
+    DIGIT           reduce using rule 19 (term -> LOWCASE .)
+    CHAR            reduce using rule 19 (term -> LOWCASE .)
+    LETTER          reduce using rule 19 (term -> LOWCASE .)
+    UPCASE          reduce using rule 19 (term -> LOWCASE .)
+    LOWCASE         reduce using rule 19 (term -> LOWCASE .)
+    CONST           reduce using rule 19 (term -> LOWCASE .)
+    POINT           reduce using rule 19 (term -> LOWCASE .)
+    BLANK           reduce using rule 19 (term -> LOWCASE .)
+    ONEZERO         reduce using rule 19 (term -> LOWCASE .)
+
+
+state 18
+
+    (21) term -> CONST .
+
+    AND             reduce using rule 21 (term -> CONST .)
+    OR              reduce using rule 21 (term -> CONST .)
+    $end            reduce using rule 21 (term -> CONST .)
+    REPEAT          reduce using rule 21 (term -> CONST .)
+    CONCAT          reduce using rule 21 (term -> CONST .)
+    NOT             reduce using rule 21 (term -> CONST .)
+    ONEOF           reduce using rule 21 (term -> CONST .)
+    WORD            reduce using rule 21 (term -> CONST .)
+    NAME            reduce using rule 21 (term -> CONST .)
+    DIGIT           reduce using rule 21 (term -> CONST .)
+    CHAR            reduce using rule 21 (term -> CONST .)
+    LETTER          reduce using rule 21 (term -> CONST .)
+    UPCASE          reduce using rule 21 (term -> CONST .)
+    LOWCASE         reduce using rule 21 (term -> CONST .)
+    CONST           reduce using rule 21 (term -> CONST .)
+    POINT           reduce using rule 21 (term -> CONST .)
+    BLANK           reduce using rule 21 (term -> CONST .)
+    ONEZERO         reduce using rule 21 (term -> CONST .)
+
+
+state 19
+
+    (22) term -> POINT .
+
+    AND             reduce using rule 22 (term -> POINT .)
+    OR              reduce using rule 22 (term -> POINT .)
+    $end            reduce using rule 22 (term -> POINT .)
+    REPEAT          reduce using rule 22 (term -> POINT .)
+    CONCAT          reduce using rule 22 (term -> POINT .)
+    NOT             reduce using rule 22 (term -> POINT .)
+    ONEOF           reduce using rule 22 (term -> POINT .)
+    WORD            reduce using rule 22 (term -> POINT .)
+    NAME            reduce using rule 22 (term -> POINT .)
+    DIGIT           reduce using rule 22 (term -> POINT .)
+    CHAR            reduce using rule 22 (term -> POINT .)
+    LETTER          reduce using rule 22 (term -> POINT .)
+    UPCASE          reduce using rule 22 (term -> POINT .)
+    LOWCASE         reduce using rule 22 (term -> POINT .)
+    CONST           reduce using rule 22 (term -> POINT .)
+    POINT           reduce using rule 22 (term -> POINT .)
+    BLANK           reduce using rule 22 (term -> POINT .)
+    ONEZERO         reduce using rule 22 (term -> POINT .)
+
+
+state 20
+
+    (23) term -> BLANK .
+
+    AND             reduce using rule 23 (term -> BLANK .)
+    OR              reduce using rule 23 (term -> BLANK .)
+    $end            reduce using rule 23 (term -> BLANK .)
+    REPEAT          reduce using rule 23 (term -> BLANK .)
+    CONCAT          reduce using rule 23 (term -> BLANK .)
+    NOT             reduce using rule 23 (term -> BLANK .)
+    ONEOF           reduce using rule 23 (term -> BLANK .)
+    WORD            reduce using rule 23 (term -> BLANK .)
+    NAME            reduce using rule 23 (term -> BLANK .)
+    DIGIT           reduce using rule 23 (term -> BLANK .)
+    CHAR            reduce using rule 23 (term -> BLANK .)
+    LETTER          reduce using rule 23 (term -> BLANK .)
+    UPCASE          reduce using rule 23 (term -> BLANK .)
+    LOWCASE         reduce using rule 23 (term -> BLANK .)
+    CONST           reduce using rule 23 (term -> BLANK .)
+    POINT           reduce using rule 23 (term -> BLANK .)
+    BLANK           reduce using rule 23 (term -> BLANK .)
+    ONEZERO         reduce using rule 23 (term -> BLANK .)
+
+
+state 21
+
+    (25) term -> ONEZERO . term
+    (14) term -> . NAME
+    (15) term -> . DIGIT
+    (16) term -> . CHAR
+    (17) term -> . LETTER
+    (18) term -> . UPCASE
+    (19) term -> . LOWCASE
+    (20) term -> . WORD
+    (21) term -> . CONST
+    (22) term -> . POINT
+    (23) term -> . BLANK
+    (24) term -> . ONEOF CONST
+    (25) term -> . ONEZERO term
+
+    NAME            shift and go to state 5
+    DIGIT           shift and go to state 13
+    CHAR            shift and go to state 14
+    LETTER          shift and go to state 15
+    UPCASE          shift and go to state 16
+    LOWCASE         shift and go to state 17
+    WORD            shift and go to state 35
+    CONST           shift and go to state 18
+    POINT           shift and go to state 19
+    BLANK           shift and go to state 20
+    ONEOF           shift and go to state 36
+    ONEZERO         shift and go to state 21
+
+    term                           shift and go to state 34
+
+state 22
+
+    (5) expr -> expr AND . expr
+    (2) expr -> . REPEAT NUMBER expr
+    (3) expr -> . REPEAT ZEROMORE expr
+    (4) expr -> . REPEAT ONEMORE expr
+    (5) expr -> . expr AND expr
+    (6) expr -> . expr OR expr
+    (7) expr -> . CONCAT expr expr
+    (8) expr -> . NOT expr
+    (9) expr -> . ONEOF NUMBER TO NUMBER
+    (10) expr -> . term
+    (11) expr -> . WORD END expr
+    (12) expr -> . WORD HAS NUMBER term
+    (13) expr -> . WORD BEGIN expr
+    (14) term -> . NAME
+    (15) term -> . DIGIT
+    (16) term -> . CHAR
+    (17) term -> . LETTER
+    (18) term -> . UPCASE
+    (19) term -> . LOWCASE
+    (20) term -> . WORD
+    (21) term -> . CONST
+    (22) term -> . POINT
+    (23) term -> . BLANK
+    (24) term -> . ONEOF CONST
+    (25) term -> . ONEZERO term
+
+    REPEAT          shift and go to state 7
+    CONCAT          shift and go to state 8
+    NOT             shift and go to state 9
+    ONEOF           shift and go to state 10
+    WORD            shift and go to state 12
+    NAME            shift and go to state 5
+    DIGIT           shift and go to state 13
+    CHAR            shift and go to state 14
+    LETTER          shift and go to state 15
+    UPCASE          shift and go to state 16
+    LOWCASE         shift and go to state 17
+    CONST           shift and go to state 18
+    POINT           shift and go to state 19
+    BLANK           shift and go to state 20
+    ONEZERO         shift and go to state 21
+
+    expr                           shift and go to state 37
+    term                           shift and go to state 11
+
+state 23
+
+    (6) expr -> expr OR . expr
+    (2) expr -> . REPEAT NUMBER expr
+    (3) expr -> . REPEAT ZEROMORE expr
+    (4) expr -> . REPEAT ONEMORE expr
+    (5) expr -> . expr AND expr
+    (6) expr -> . expr OR expr
+    (7) expr -> . CONCAT expr expr
+    (8) expr -> . NOT expr
+    (9) expr -> . ONEOF NUMBER TO NUMBER
+    (10) expr -> . term
+    (11) expr -> . WORD END expr
+    (12) expr -> . WORD HAS NUMBER term
+    (13) expr -> . WORD BEGIN expr
+    (14) term -> . NAME
+    (15) term -> . DIGIT
+    (16) term -> . CHAR
+    (17) term -> . LETTER
+    (18) term -> . UPCASE
+    (19) term -> . LOWCASE
+    (20) term -> . WORD
+    (21) term -> . CONST
+    (22) term -> . POINT
+    (23) term -> . BLANK
+    (24) term -> . ONEOF CONST
+    (25) term -> . ONEZERO term
+
+    REPEAT          shift and go to state 7
+    CONCAT          shift and go to state 8
+    NOT             shift and go to state 9
+    ONEOF           shift and go to state 10
+    WORD            shift and go to state 12
+    NAME            shift and go to state 5
+    DIGIT           shift and go to state 13
+    CHAR            shift and go to state 14
+    LETTER          shift and go to state 15
+    UPCASE          shift and go to state 16
+    LOWCASE         shift and go to state 17
+    CONST           shift and go to state 18
+    POINT           shift and go to state 19
+    BLANK           shift and go to state 20
+    ONEZERO         shift and go to state 21
+
+    expr                           shift and go to state 38
+    term                           shift and go to state 11
+
+state 24
+
+    (2) expr -> REPEAT NUMBER . expr
+    (2) expr -> . REPEAT NUMBER expr
+    (3) expr -> . REPEAT ZEROMORE expr
+    (4) expr -> . REPEAT ONEMORE expr
+    (5) expr -> . expr AND expr
+    (6) expr -> . expr OR expr
+    (7) expr -> . CONCAT expr expr
+    (8) expr -> . NOT expr
+    (9) expr -> . ONEOF NUMBER TO NUMBER
+    (10) expr -> . term
+    (11) expr -> . WORD END expr
+    (12) expr -> . WORD HAS NUMBER term
+    (13) expr -> . WORD BEGIN expr
+    (14) term -> . NAME
+    (15) term -> . DIGIT
+    (16) term -> . CHAR
+    (17) term -> . LETTER
+    (18) term -> . UPCASE
+    (19) term -> . LOWCASE
+    (20) term -> . WORD
+    (21) term -> . CONST
+    (22) term -> . POINT
+    (23) term -> . BLANK
+    (24) term -> . ONEOF CONST
+    (25) term -> . ONEZERO term
+
+    REPEAT          shift and go to state 7
+    CONCAT          shift and go to state 8
+    NOT             shift and go to state 9
+    ONEOF           shift and go to state 10
+    WORD            shift and go to state 12
+    NAME            shift and go to state 5
+    DIGIT           shift and go to state 13
+    CHAR            shift and go to state 14
+    LETTER          shift and go to state 15
+    UPCASE          shift and go to state 16
+    LOWCASE         shift and go to state 17
+    CONST           shift and go to state 18
+    POINT           shift and go to state 19
+    BLANK           shift and go to state 20
+    ONEZERO         shift and go to state 21
+
+    expr                           shift and go to state 39
+    term                           shift and go to state 11
+
+state 25
+
+    (3) expr -> REPEAT ZEROMORE . expr
+    (2) expr -> . REPEAT NUMBER expr
+    (3) expr -> . REPEAT ZEROMORE expr
+    (4) expr -> . REPEAT ONEMORE expr
+    (5) expr -> . expr AND expr
+    (6) expr -> . expr OR expr
+    (7) expr -> . CONCAT expr expr
+    (8) expr -> . NOT expr
+    (9) expr -> . ONEOF NUMBER TO NUMBER
+    (10) expr -> . term
+    (11) expr -> . WORD END expr
+    (12) expr -> . WORD HAS NUMBER term
+    (13) expr -> . WORD BEGIN expr
+    (14) term -> . NAME
+    (15) term -> . DIGIT
+    (16) term -> . CHAR
+    (17) term -> . LETTER
+    (18) term -> . UPCASE
+    (19) term -> . LOWCASE
+    (20) term -> . WORD
+    (21) term -> . CONST
+    (22) term -> . POINT
+    (23) term -> . BLANK
+    (24) term -> . ONEOF CONST
+    (25) term -> . ONEZERO term
+
+    REPEAT          shift and go to state 7
+    CONCAT          shift and go to state 8
+    NOT             shift and go to state 9
+    ONEOF           shift and go to state 10
+    WORD            shift and go to state 12
+    NAME            shift and go to state 5
+    DIGIT           shift and go to state 13
+    CHAR            shift and go to state 14
+    LETTER          shift and go to state 15
+    UPCASE          shift and go to state 16
+    LOWCASE         shift and go to state 17
+    CONST           shift and go to state 18
+    POINT           shift and go to state 19
+    BLANK           shift and go to state 20
+    ONEZERO         shift and go to state 21
+
+    expr                           shift and go to state 40
+    term                           shift and go to state 11
+
+state 26
+
+    (4) expr -> REPEAT ONEMORE . expr
+    (2) expr -> . REPEAT NUMBER expr
+    (3) expr -> . REPEAT ZEROMORE expr
+    (4) expr -> . REPEAT ONEMORE expr
+    (5) expr -> . expr AND expr
+    (6) expr -> . expr OR expr
+    (7) expr -> . CONCAT expr expr
+    (8) expr -> . NOT expr
+    (9) expr -> . ONEOF NUMBER TO NUMBER
+    (10) expr -> . term
+    (11) expr -> . WORD END expr
+    (12) expr -> . WORD HAS NUMBER term
+    (13) expr -> . WORD BEGIN expr
+    (14) term -> . NAME
+    (15) term -> . DIGIT
+    (16) term -> . CHAR
+    (17) term -> . LETTER
+    (18) term -> . UPCASE
+    (19) term -> . LOWCASE
+    (20) term -> . WORD
+    (21) term -> . CONST
+    (22) term -> . POINT
+    (23) term -> . BLANK
+    (24) term -> . ONEOF CONST
+    (25) term -> . ONEZERO term
+
+    REPEAT          shift and go to state 7
+    CONCAT          shift and go to state 8
+    NOT             shift and go to state 9
+    ONEOF           shift and go to state 10
+    WORD            shift and go to state 12
+    NAME            shift and go to state 5
+    DIGIT           shift and go to state 13
+    CHAR            shift and go to state 14
+    LETTER          shift and go to state 15
+    UPCASE          shift and go to state 16
+    LOWCASE         shift and go to state 17
+    CONST           shift and go to state 18
+    POINT           shift and go to state 19
+    BLANK           shift and go to state 20
+    ONEZERO         shift and go to state 21
+
+    expr                           shift and go to state 41
+    term                           shift and go to state 11
+
+state 27
+
+    (7) expr -> CONCAT expr . expr
+    (5) expr -> expr . AND expr
+    (6) expr -> expr . OR expr
+    (2) expr -> . REPEAT NUMBER expr
+    (3) expr -> . REPEAT ZEROMORE expr
+    (4) expr -> . REPEAT ONEMORE expr
+    (5) expr -> . expr AND expr
+    (6) expr -> . expr OR expr
+    (7) expr -> . CONCAT expr expr
+    (8) expr -> . NOT expr
+    (9) expr -> . ONEOF NUMBER TO NUMBER
+    (10) expr -> . term
+    (11) expr -> . WORD END expr
+    (12) expr -> . WORD HAS NUMBER term
+    (13) expr -> . WORD BEGIN expr
+    (14) term -> . NAME
+    (15) term -> . DIGIT
+    (16) term -> . CHAR
+    (17) term -> . LETTER
+    (18) term -> . UPCASE
+    (19) term -> . LOWCASE
+    (20) term -> . WORD
+    (21) term -> . CONST
+    (22) term -> . POINT
+    (23) term -> . BLANK
+    (24) term -> . ONEOF CONST
+    (25) term -> . ONEZERO term
+
+    AND             shift and go to state 22
+    OR              shift and go to state 23
+    REPEAT          shift and go to state 7
+    CONCAT          shift and go to state 8
+    NOT             shift and go to state 9
+    ONEOF           shift and go to state 10
+    WORD            shift and go to state 12
+    NAME            shift and go to state 5
+    DIGIT           shift and go to state 13
+    CHAR            shift and go to state 14
+    LETTER          shift and go to state 15
+    UPCASE          shift and go to state 16
+    LOWCASE         shift and go to state 17
+    CONST           shift and go to state 18
+    POINT           shift and go to state 19
+    BLANK           shift and go to state 20
+    ONEZERO         shift and go to state 21
+
+    expr                           shift and go to state 42
+    term                           shift and go to state 11
+
+state 28
+
+    (8) expr -> NOT expr .
+    (5) expr -> expr . AND expr
+    (6) expr -> expr . OR expr
+
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    $end            reduce using rule 8 (expr -> NOT expr .)
+    REPEAT          reduce using rule 8 (expr -> NOT expr .)
+    CONCAT          reduce using rule 8 (expr -> NOT expr .)
+    NOT             reduce using rule 8 (expr -> NOT expr .)
+    ONEOF           reduce using rule 8 (expr -> NOT expr .)
+    WORD            reduce using rule 8 (expr -> NOT expr .)
+    NAME            reduce using rule 8 (expr -> NOT expr .)
+    DIGIT           reduce using rule 8 (expr -> NOT expr .)
+    CHAR            reduce using rule 8 (expr -> NOT expr .)
+    LETTER          reduce using rule 8 (expr -> NOT expr .)
+    UPCASE          reduce using rule 8 (expr -> NOT expr .)
+    LOWCASE         reduce using rule 8 (expr -> NOT expr .)
+    CONST           reduce using rule 8 (expr -> NOT expr .)
+    POINT           reduce using rule 8 (expr -> NOT expr .)
+    BLANK           reduce using rule 8 (expr -> NOT expr .)
+    ONEZERO         reduce using rule 8 (expr -> NOT expr .)
+    AND             shift and go to state 22
+    OR              shift and go to state 23
+
+  ! AND             [ reduce using rule 8 (expr -> NOT expr .) ]
+  ! OR              [ reduce using rule 8 (expr -> NOT expr .) ]
+
+
+state 29
+
+    (9) expr -> ONEOF NUMBER . TO NUMBER
+
+    TO              shift and go to state 43
+
+
+state 30
+
+    (24) term -> ONEOF CONST .
+
+    AND             reduce using rule 24 (term -> ONEOF CONST .)
+    OR              reduce using rule 24 (term -> ONEOF CONST .)
+    $end            reduce using rule 24 (term -> ONEOF CONST .)
+    REPEAT          reduce using rule 24 (term -> ONEOF CONST .)
+    CONCAT          reduce using rule 24 (term -> ONEOF CONST .)
+    NOT             reduce using rule 24 (term -> ONEOF CONST .)
+    ONEOF           reduce using rule 24 (term -> ONEOF CONST .)
+    WORD            reduce using rule 24 (term -> ONEOF CONST .)
+    NAME            reduce using rule 24 (term -> ONEOF CONST .)
+    DIGIT           reduce using rule 24 (term -> ONEOF CONST .)
+    CHAR            reduce using rule 24 (term -> ONEOF CONST .)
+    LETTER          reduce using rule 24 (term -> ONEOF CONST .)
+    UPCASE          reduce using rule 24 (term -> ONEOF CONST .)
+    LOWCASE         reduce using rule 24 (term -> ONEOF CONST .)
+    CONST           reduce using rule 24 (term -> ONEOF CONST .)
+    POINT           reduce using rule 24 (term -> ONEOF CONST .)
+    BLANK           reduce using rule 24 (term -> ONEOF CONST .)
+    ONEZERO         reduce using rule 24 (term -> ONEOF CONST .)
+
+
+state 31
+
+    (11) expr -> WORD END . expr
+    (2) expr -> . REPEAT NUMBER expr
+    (3) expr -> . REPEAT ZEROMORE expr
+    (4) expr -> . REPEAT ONEMORE expr
+    (5) expr -> . expr AND expr
+    (6) expr -> . expr OR expr
+    (7) expr -> . CONCAT expr expr
+    (8) expr -> . NOT expr
+    (9) expr -> . ONEOF NUMBER TO NUMBER
+    (10) expr -> . term
+    (11) expr -> . WORD END expr
+    (12) expr -> . WORD HAS NUMBER term
+    (13) expr -> . WORD BEGIN expr
+    (14) term -> . NAME
+    (15) term -> . DIGIT
+    (16) term -> . CHAR
+    (17) term -> . LETTER
+    (18) term -> . UPCASE
+    (19) term -> . LOWCASE
+    (20) term -> . WORD
+    (21) term -> . CONST
+    (22) term -> . POINT
+    (23) term -> . BLANK
+    (24) term -> . ONEOF CONST
+    (25) term -> . ONEZERO term
+
+    REPEAT          shift and go to state 7
+    CONCAT          shift and go to state 8
+    NOT             shift and go to state 9
+    ONEOF           shift and go to state 10
+    WORD            shift and go to state 12
+    NAME            shift and go to state 5
+    DIGIT           shift and go to state 13
+    CHAR            shift and go to state 14
+    LETTER          shift and go to state 15
+    UPCASE          shift and go to state 16
+    LOWCASE         shift and go to state 17
+    CONST           shift and go to state 18
+    POINT           shift and go to state 19
+    BLANK           shift and go to state 20
+    ONEZERO         shift and go to state 21
+
+    expr                           shift and go to state 44
+    term                           shift and go to state 11
+
+state 32
+
+    (12) expr -> WORD HAS . NUMBER term
+
+    NUMBER          shift and go to state 45
+
+
+state 33
+
+    (13) expr -> WORD BEGIN . expr
+    (2) expr -> . REPEAT NUMBER expr
+    (3) expr -> . REPEAT ZEROMORE expr
+    (4) expr -> . REPEAT ONEMORE expr
+    (5) expr -> . expr AND expr
+    (6) expr -> . expr OR expr
+    (7) expr -> . CONCAT expr expr
+    (8) expr -> . NOT expr
+    (9) expr -> . ONEOF NUMBER TO NUMBER
+    (10) expr -> . term
+    (11) expr -> . WORD END expr
+    (12) expr -> . WORD HAS NUMBER term
+    (13) expr -> . WORD BEGIN expr
+    (14) term -> . NAME
+    (15) term -> . DIGIT
+    (16) term -> . CHAR
+    (17) term -> . LETTER
+    (18) term -> . UPCASE
+    (19) term -> . LOWCASE
+    (20) term -> . WORD
+    (21) term -> . CONST
+    (22) term -> . POINT
+    (23) term -> . BLANK
+    (24) term -> . ONEOF CONST
+    (25) term -> . ONEZERO term
+
+    REPEAT          shift and go to state 7
+    CONCAT          shift and go to state 8
+    NOT             shift and go to state 9
+    ONEOF           shift and go to state 10
+    WORD            shift and go to state 12
+    NAME            shift and go to state 5
+    DIGIT           shift and go to state 13
+    CHAR            shift and go to state 14
+    LETTER          shift and go to state 15
+    UPCASE          shift and go to state 16
+    LOWCASE         shift and go to state 17
+    CONST           shift and go to state 18
+    POINT           shift and go to state 19
+    BLANK           shift and go to state 20
+    ONEZERO         shift and go to state 21
+
+    expr                           shift and go to state 46
+    term                           shift and go to state 11
+
+state 34
+
+    (25) term -> ONEZERO term .
+
+    AND             reduce using rule 25 (term -> ONEZERO term .)
+    OR              reduce using rule 25 (term -> ONEZERO term .)
+    $end            reduce using rule 25 (term -> ONEZERO term .)
+    REPEAT          reduce using rule 25 (term -> ONEZERO term .)
+    CONCAT          reduce using rule 25 (term -> ONEZERO term .)
+    NOT             reduce using rule 25 (term -> ONEZERO term .)
+    ONEOF           reduce using rule 25 (term -> ONEZERO term .)
+    WORD            reduce using rule 25 (term -> ONEZERO term .)
+    NAME            reduce using rule 25 (term -> ONEZERO term .)
+    DIGIT           reduce using rule 25 (term -> ONEZERO term .)
+    CHAR            reduce using rule 25 (term -> ONEZERO term .)
+    LETTER          reduce using rule 25 (term -> ONEZERO term .)
+    UPCASE          reduce using rule 25 (term -> ONEZERO term .)
+    LOWCASE         reduce using rule 25 (term -> ONEZERO term .)
+    CONST           reduce using rule 25 (term -> ONEZERO term .)
+    POINT           reduce using rule 25 (term -> ONEZERO term .)
+    BLANK           reduce using rule 25 (term -> ONEZERO term .)
+    ONEZERO         reduce using rule 25 (term -> ONEZERO term .)
+
+
+state 35
+
+    (20) term -> WORD .
+
+    AND             reduce using rule 20 (term -> WORD .)
+    OR              reduce using rule 20 (term -> WORD .)
+    $end            reduce using rule 20 (term -> WORD .)
+    REPEAT          reduce using rule 20 (term -> WORD .)
+    CONCAT          reduce using rule 20 (term -> WORD .)
+    NOT             reduce using rule 20 (term -> WORD .)
+    ONEOF           reduce using rule 20 (term -> WORD .)
+    WORD            reduce using rule 20 (term -> WORD .)
+    NAME            reduce using rule 20 (term -> WORD .)
+    DIGIT           reduce using rule 20 (term -> WORD .)
+    CHAR            reduce using rule 20 (term -> WORD .)
+    LETTER          reduce using rule 20 (term -> WORD .)
+    UPCASE          reduce using rule 20 (term -> WORD .)
+    LOWCASE         reduce using rule 20 (term -> WORD .)
+    CONST           reduce using rule 20 (term -> WORD .)
+    POINT           reduce using rule 20 (term -> WORD .)
+    BLANK           reduce using rule 20 (term -> WORD .)
+    ONEZERO         reduce using rule 20 (term -> WORD .)
+
+
+state 36
+
+    (24) term -> ONEOF . CONST
+
+    CONST           shift and go to state 30
+
+
+state 37
+
+    (5) expr -> expr AND expr .
+    (5) expr -> expr . AND expr
+    (6) expr -> expr . OR expr
+
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    $end            reduce using rule 5 (expr -> expr AND expr .)
+    REPEAT          reduce using rule 5 (expr -> expr AND expr .)
+    CONCAT          reduce using rule 5 (expr -> expr AND expr .)
+    NOT             reduce using rule 5 (expr -> expr AND expr .)
+    ONEOF           reduce using rule 5 (expr -> expr AND expr .)
+    WORD            reduce using rule 5 (expr -> expr AND expr .)
+    NAME            reduce using rule 5 (expr -> expr AND expr .)
+    DIGIT           reduce using rule 5 (expr -> expr AND expr .)
+    CHAR            reduce using rule 5 (expr -> expr AND expr .)
+    LETTER          reduce using rule 5 (expr -> expr AND expr .)
+    UPCASE          reduce using rule 5 (expr -> expr AND expr .)
+    LOWCASE         reduce using rule 5 (expr -> expr AND expr .)
+    CONST           reduce using rule 5 (expr -> expr AND expr .)
+    POINT           reduce using rule 5 (expr -> expr AND expr .)
+    BLANK           reduce using rule 5 (expr -> expr AND expr .)
+    ONEZERO         reduce using rule 5 (expr -> expr AND expr .)
+    AND             shift and go to state 22
+    OR              shift and go to state 23
+
+  ! AND             [ reduce using rule 5 (expr -> expr AND expr .) ]
+  ! OR              [ reduce using rule 5 (expr -> expr AND expr .) ]
+
+
+state 38
+
+    (6) expr -> expr OR expr .
+    (5) expr -> expr . AND expr
+    (6) expr -> expr . OR expr
+
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    $end            reduce using rule 6 (expr -> expr OR expr .)
+    REPEAT          reduce using rule 6 (expr -> expr OR expr .)
+    CONCAT          reduce using rule 6 (expr -> expr OR expr .)
+    NOT             reduce using rule 6 (expr -> expr OR expr .)
+    ONEOF           reduce using rule 6 (expr -> expr OR expr .)
+    WORD            reduce using rule 6 (expr -> expr OR expr .)
+    NAME            reduce using rule 6 (expr -> expr OR expr .)
+    DIGIT           reduce using rule 6 (expr -> expr OR expr .)
+    CHAR            reduce using rule 6 (expr -> expr OR expr .)
+    LETTER          reduce using rule 6 (expr -> expr OR expr .)
+    UPCASE          reduce using rule 6 (expr -> expr OR expr .)
+    LOWCASE         reduce using rule 6 (expr -> expr OR expr .)
+    CONST           reduce using rule 6 (expr -> expr OR expr .)
+    POINT           reduce using rule 6 (expr -> expr OR expr .)
+    BLANK           reduce using rule 6 (expr -> expr OR expr .)
+    ONEZERO         reduce using rule 6 (expr -> expr OR expr .)
+    AND             shift and go to state 22
+    OR              shift and go to state 23
+
+  ! AND             [ reduce using rule 6 (expr -> expr OR expr .) ]
+  ! OR              [ reduce using rule 6 (expr -> expr OR expr .) ]
+
+
+state 39
+
+    (2) expr -> REPEAT NUMBER expr .
+    (5) expr -> expr . AND expr
+    (6) expr -> expr . OR expr
+
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    $end            reduce using rule 2 (expr -> REPEAT NUMBER expr .)
+    REPEAT          reduce using rule 2 (expr -> REPEAT NUMBER expr .)
+    CONCAT          reduce using rule 2 (expr -> REPEAT NUMBER expr .)
+    NOT             reduce using rule 2 (expr -> REPEAT NUMBER expr .)
+    ONEOF           reduce using rule 2 (expr -> REPEAT NUMBER expr .)
+    WORD            reduce using rule 2 (expr -> REPEAT NUMBER expr .)
+    NAME            reduce using rule 2 (expr -> REPEAT NUMBER expr .)
+    DIGIT           reduce using rule 2 (expr -> REPEAT NUMBER expr .)
+    CHAR            reduce using rule 2 (expr -> REPEAT NUMBER expr .)
+    LETTER          reduce using rule 2 (expr -> REPEAT NUMBER expr .)
+    UPCASE          reduce using rule 2 (expr -> REPEAT NUMBER expr .)
+    LOWCASE         reduce using rule 2 (expr -> REPEAT NUMBER expr .)
+    CONST           reduce using rule 2 (expr -> REPEAT NUMBER expr .)
+    POINT           reduce using rule 2 (expr -> REPEAT NUMBER expr .)
+    BLANK           reduce using rule 2 (expr -> REPEAT NUMBER expr .)
+    ONEZERO         reduce using rule 2 (expr -> REPEAT NUMBER expr .)
+    AND             shift and go to state 22
+    OR              shift and go to state 23
+
+  ! AND             [ reduce using rule 2 (expr -> REPEAT NUMBER expr .) ]
+  ! OR              [ reduce using rule 2 (expr -> REPEAT NUMBER expr .) ]
+
+
+state 40
+
+    (3) expr -> REPEAT ZEROMORE expr .
+    (5) expr -> expr . AND expr
+    (6) expr -> expr . OR expr
+
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    $end            reduce using rule 3 (expr -> REPEAT ZEROMORE expr .)
+    REPEAT          reduce using rule 3 (expr -> REPEAT ZEROMORE expr .)
+    CONCAT          reduce using rule 3 (expr -> REPEAT ZEROMORE expr .)
+    NOT             reduce using rule 3 (expr -> REPEAT ZEROMORE expr .)
+    ONEOF           reduce using rule 3 (expr -> REPEAT ZEROMORE expr .)
+    WORD            reduce using rule 3 (expr -> REPEAT ZEROMORE expr .)
+    NAME            reduce using rule 3 (expr -> REPEAT ZEROMORE expr .)
+    DIGIT           reduce using rule 3 (expr -> REPEAT ZEROMORE expr .)
+    CHAR            reduce using rule 3 (expr -> REPEAT ZEROMORE expr .)
+    LETTER          reduce using rule 3 (expr -> REPEAT ZEROMORE expr .)
+    UPCASE          reduce using rule 3 (expr -> REPEAT ZEROMORE expr .)
+    LOWCASE         reduce using rule 3 (expr -> REPEAT ZEROMORE expr .)
+    CONST           reduce using rule 3 (expr -> REPEAT ZEROMORE expr .)
+    POINT           reduce using rule 3 (expr -> REPEAT ZEROMORE expr .)
+    BLANK           reduce using rule 3 (expr -> REPEAT ZEROMORE expr .)
+    ONEZERO         reduce using rule 3 (expr -> REPEAT ZEROMORE expr .)
+    AND             shift and go to state 22
+    OR              shift and go to state 23
+
+  ! AND             [ reduce using rule 3 (expr -> REPEAT ZEROMORE expr .) ]
+  ! OR              [ reduce using rule 3 (expr -> REPEAT ZEROMORE expr .) ]
+
+
+state 41
+
+    (4) expr -> REPEAT ONEMORE expr .
+    (5) expr -> expr . AND expr
+    (6) expr -> expr . OR expr
+
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    $end            reduce using rule 4 (expr -> REPEAT ONEMORE expr .)
+    REPEAT          reduce using rule 4 (expr -> REPEAT ONEMORE expr .)
+    CONCAT          reduce using rule 4 (expr -> REPEAT ONEMORE expr .)
+    NOT             reduce using rule 4 (expr -> REPEAT ONEMORE expr .)
+    ONEOF           reduce using rule 4 (expr -> REPEAT ONEMORE expr .)
+    WORD            reduce using rule 4 (expr -> REPEAT ONEMORE expr .)
+    NAME            reduce using rule 4 (expr -> REPEAT ONEMORE expr .)
+    DIGIT           reduce using rule 4 (expr -> REPEAT ONEMORE expr .)
+    CHAR            reduce using rule 4 (expr -> REPEAT ONEMORE expr .)
+    LETTER          reduce using rule 4 (expr -> REPEAT ONEMORE expr .)
+    UPCASE          reduce using rule 4 (expr -> REPEAT ONEMORE expr .)
+    LOWCASE         reduce using rule 4 (expr -> REPEAT ONEMORE expr .)
+    CONST           reduce using rule 4 (expr -> REPEAT ONEMORE expr .)
+    POINT           reduce using rule 4 (expr -> REPEAT ONEMORE expr .)
+    BLANK           reduce using rule 4 (expr -> REPEAT ONEMORE expr .)
+    ONEZERO         reduce using rule 4 (expr -> REPEAT ONEMORE expr .)
+    AND             shift and go to state 22
+    OR              shift and go to state 23
+
+  ! AND             [ reduce using rule 4 (expr -> REPEAT ONEMORE expr .) ]
+  ! OR              [ reduce using rule 4 (expr -> REPEAT ONEMORE expr .) ]
+
+
+state 42
+
+    (7) expr -> CONCAT expr expr .
+    (5) expr -> expr . AND expr
+    (6) expr -> expr . OR expr
+
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    $end            reduce using rule 7 (expr -> CONCAT expr expr .)
+    REPEAT          reduce using rule 7 (expr -> CONCAT expr expr .)
+    CONCAT          reduce using rule 7 (expr -> CONCAT expr expr .)
+    NOT             reduce using rule 7 (expr -> CONCAT expr expr .)
+    ONEOF           reduce using rule 7 (expr -> CONCAT expr expr .)
+    WORD            reduce using rule 7 (expr -> CONCAT expr expr .)
+    NAME            reduce using rule 7 (expr -> CONCAT expr expr .)
+    DIGIT           reduce using rule 7 (expr -> CONCAT expr expr .)
+    CHAR            reduce using rule 7 (expr -> CONCAT expr expr .)
+    LETTER          reduce using rule 7 (expr -> CONCAT expr expr .)
+    UPCASE          reduce using rule 7 (expr -> CONCAT expr expr .)
+    LOWCASE         reduce using rule 7 (expr -> CONCAT expr expr .)
+    CONST           reduce using rule 7 (expr -> CONCAT expr expr .)
+    POINT           reduce using rule 7 (expr -> CONCAT expr expr .)
+    BLANK           reduce using rule 7 (expr -> CONCAT expr expr .)
+    ONEZERO         reduce using rule 7 (expr -> CONCAT expr expr .)
+    AND             shift and go to state 22
+    OR              shift and go to state 23
+
+  ! AND             [ reduce using rule 7 (expr -> CONCAT expr expr .) ]
+  ! OR              [ reduce using rule 7 (expr -> CONCAT expr expr .) ]
+
+
+state 43
+
+    (9) expr -> ONEOF NUMBER TO . NUMBER
+
+    NUMBER          shift and go to state 47
+
+
+state 44
+
+    (11) expr -> WORD END expr .
+    (5) expr -> expr . AND expr
+    (6) expr -> expr . OR expr
+
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    $end            reduce using rule 11 (expr -> WORD END expr .)
+    REPEAT          reduce using rule 11 (expr -> WORD END expr .)
+    CONCAT          reduce using rule 11 (expr -> WORD END expr .)
+    NOT             reduce using rule 11 (expr -> WORD END expr .)
+    ONEOF           reduce using rule 11 (expr -> WORD END expr .)
+    WORD            reduce using rule 11 (expr -> WORD END expr .)
+    NAME            reduce using rule 11 (expr -> WORD END expr .)
+    DIGIT           reduce using rule 11 (expr -> WORD END expr .)
+    CHAR            reduce using rule 11 (expr -> WORD END expr .)
+    LETTER          reduce using rule 11 (expr -> WORD END expr .)
+    UPCASE          reduce using rule 11 (expr -> WORD END expr .)
+    LOWCASE         reduce using rule 11 (expr -> WORD END expr .)
+    CONST           reduce using rule 11 (expr -> WORD END expr .)
+    POINT           reduce using rule 11 (expr -> WORD END expr .)
+    BLANK           reduce using rule 11 (expr -> WORD END expr .)
+    ONEZERO         reduce using rule 11 (expr -> WORD END expr .)
+    AND             shift and go to state 22
+    OR              shift and go to state 23
+
+  ! AND             [ reduce using rule 11 (expr -> WORD END expr .) ]
+  ! OR              [ reduce using rule 11 (expr -> WORD END expr .) ]
+
+
+state 45
+
+    (12) expr -> WORD HAS NUMBER . term
+    (14) term -> . NAME
+    (15) term -> . DIGIT
+    (16) term -> . CHAR
+    (17) term -> . LETTER
+    (18) term -> . UPCASE
+    (19) term -> . LOWCASE
+    (20) term -> . WORD
+    (21) term -> . CONST
+    (22) term -> . POINT
+    (23) term -> . BLANK
+    (24) term -> . ONEOF CONST
+    (25) term -> . ONEZERO term
+
+    NAME            shift and go to state 5
+    DIGIT           shift and go to state 13
+    CHAR            shift and go to state 14
+    LETTER          shift and go to state 15
+    UPCASE          shift and go to state 16
+    LOWCASE         shift and go to state 17
+    WORD            shift and go to state 35
+    CONST           shift and go to state 18
+    POINT           shift and go to state 19
+    BLANK           shift and go to state 20
+    ONEOF           shift and go to state 36
+    ONEZERO         shift and go to state 21
+
+    term                           shift and go to state 48
+
+state 46
+
+    (13) expr -> WORD BEGIN expr .
+    (5) expr -> expr . AND expr
+    (6) expr -> expr . OR expr
+
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    $end            reduce using rule 13 (expr -> WORD BEGIN expr .)
+    REPEAT          reduce using rule 13 (expr -> WORD BEGIN expr .)
+    CONCAT          reduce using rule 13 (expr -> WORD BEGIN expr .)
+    NOT             reduce using rule 13 (expr -> WORD BEGIN expr .)
+    ONEOF           reduce using rule 13 (expr -> WORD BEGIN expr .)
+    WORD            reduce using rule 13 (expr -> WORD BEGIN expr .)
+    NAME            reduce using rule 13 (expr -> WORD BEGIN expr .)
+    DIGIT           reduce using rule 13 (expr -> WORD BEGIN expr .)
+    CHAR            reduce using rule 13 (expr -> WORD BEGIN expr .)
+    LETTER          reduce using rule 13 (expr -> WORD BEGIN expr .)
+    UPCASE          reduce using rule 13 (expr -> WORD BEGIN expr .)
+    LOWCASE         reduce using rule 13 (expr -> WORD BEGIN expr .)
+    CONST           reduce using rule 13 (expr -> WORD BEGIN expr .)
+    POINT           reduce using rule 13 (expr -> WORD BEGIN expr .)
+    BLANK           reduce using rule 13 (expr -> WORD BEGIN expr .)
+    ONEZERO         reduce using rule 13 (expr -> WORD BEGIN expr .)
+    AND             shift and go to state 22
+    OR              shift and go to state 23
+
+  ! AND             [ reduce using rule 13 (expr -> WORD BEGIN expr .) ]
+  ! OR              [ reduce using rule 13 (expr -> WORD BEGIN expr .) ]
+
+
+state 47
+
+    (9) expr -> ONEOF NUMBER TO NUMBER .
+
+    AND             reduce using rule 9 (expr -> ONEOF NUMBER TO NUMBER .)
+    OR              reduce using rule 9 (expr -> ONEOF NUMBER TO NUMBER .)
+    $end            reduce using rule 9 (expr -> ONEOF NUMBER TO NUMBER .)
+    REPEAT          reduce using rule 9 (expr -> ONEOF NUMBER TO NUMBER .)
+    CONCAT          reduce using rule 9 (expr -> ONEOF NUMBER TO NUMBER .)
+    NOT             reduce using rule 9 (expr -> ONEOF NUMBER TO NUMBER .)
+    ONEOF           reduce using rule 9 (expr -> ONEOF NUMBER TO NUMBER .)
+    WORD            reduce using rule 9 (expr -> ONEOF NUMBER TO NUMBER .)
+    NAME            reduce using rule 9 (expr -> ONEOF NUMBER TO NUMBER .)
+    DIGIT           reduce using rule 9 (expr -> ONEOF NUMBER TO NUMBER .)
+    CHAR            reduce using rule 9 (expr -> ONEOF NUMBER TO NUMBER .)
+    LETTER          reduce using rule 9 (expr -> ONEOF NUMBER TO NUMBER .)
+    UPCASE          reduce using rule 9 (expr -> ONEOF NUMBER TO NUMBER .)
+    LOWCASE         reduce using rule 9 (expr -> ONEOF NUMBER TO NUMBER .)
+    CONST           reduce using rule 9 (expr -> ONEOF NUMBER TO NUMBER .)
+    POINT           reduce using rule 9 (expr -> ONEOF NUMBER TO NUMBER .)
+    BLANK           reduce using rule 9 (expr -> ONEOF NUMBER TO NUMBER .)
+    ONEZERO         reduce using rule 9 (expr -> ONEOF NUMBER TO NUMBER .)
+
+
+state 48
+
+    (12) expr -> WORD HAS NUMBER term .
+
+    AND             reduce using rule 12 (expr -> WORD HAS NUMBER term .)
+    OR              reduce using rule 12 (expr -> WORD HAS NUMBER term .)
+    $end            reduce using rule 12 (expr -> WORD HAS NUMBER term .)
+    REPEAT          reduce using rule 12 (expr -> WORD HAS NUMBER term .)
+    CONCAT          reduce using rule 12 (expr -> WORD HAS NUMBER term .)
+    NOT             reduce using rule 12 (expr -> WORD HAS NUMBER term .)
+    ONEOF           reduce using rule 12 (expr -> WORD HAS NUMBER term .)
+    WORD            reduce using rule 12 (expr -> WORD HAS NUMBER term .)
+    NAME            reduce using rule 12 (expr -> WORD HAS NUMBER term .)
+    DIGIT           reduce using rule 12 (expr -> WORD HAS NUMBER term .)
+    CHAR            reduce using rule 12 (expr -> WORD HAS NUMBER term .)
+    LETTER          reduce using rule 12 (expr -> WORD HAS NUMBER term .)
+    UPCASE          reduce using rule 12 (expr -> WORD HAS NUMBER term .)
+    LOWCASE         reduce using rule 12 (expr -> WORD HAS NUMBER term .)
+    CONST           reduce using rule 12 (expr -> WORD HAS NUMBER term .)
+    POINT           reduce using rule 12 (expr -> WORD HAS NUMBER term .)
+    BLANK           reduce using rule 12 (expr -> WORD HAS NUMBER term .)
+    ONEZERO         reduce using rule 12 (expr -> WORD HAS NUMBER term .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for AND in state 28 resolved as shift
+WARNING: shift/reduce conflict for OR in state 28 resolved as shift
+WARNING: shift/reduce conflict for AND in state 37 resolved as shift
+WARNING: shift/reduce conflict for OR in state 37 resolved as shift
+WARNING: shift/reduce conflict for AND in state 38 resolved as shift
+WARNING: shift/reduce conflict for OR in state 38 resolved as shift
+WARNING: shift/reduce conflict for AND in state 39 resolved as shift
+WARNING: shift/reduce conflict for OR in state 39 resolved as shift
+WARNING: shift/reduce conflict for AND in state 40 resolved as shift
+WARNING: shift/reduce conflict for OR in state 40 resolved as shift
+WARNING: shift/reduce conflict for AND in state 41 resolved as shift
+WARNING: shift/reduce conflict for OR in state 41 resolved as shift
+WARNING: shift/reduce conflict for AND in state 42 resolved as shift
+WARNING: shift/reduce conflict for OR in state 42 resolved as shift
+WARNING: shift/reduce conflict for AND in state 44 resolved as shift
+WARNING: shift/reduce conflict for OR in state 44 resolved as shift
+WARNING: shift/reduce conflict for AND in state 46 resolved as shift
+WARNING: shift/reduce conflict for OR in state 46 resolved as shift

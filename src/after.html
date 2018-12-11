@@ -1,0 +1,61 @@
+<html>
+
+<hr/>
+	<h1 style="text-align: center; font-family: verdana; color: gray">A Lightweight Regex Verifier</h1>
+<hr/>
+<form action= "/example/" method="GET" style="margin-left: 130px; margin-right: auto;">
+	<input type="submit" name = "example1" value="Example 1" style="background-color:gray; cursor: pointer; font-size: 15px; font-family: verdana;">
+	<input type="submit" name = "example2" value="Example 2" style="background-color:gray; cursor: pointer; font-size: 15px; font-family: verdana;">
+	<input type="submit" name = "example3" value="Example 3" style="background-color:gray; cursor: pointer; font-size: 15px; font-family: verdana;">
+	<input type="submit" name = "example4" value="Example 4" style="background-color:gray; cursor: pointer; font-size: 15px; font-family: verdana;">
+	<input type="submit" name = "example5" value="Example 5" style="background-color:gray; cursor: pointer; font-size: 15px; font-family: verdana;">
+	<input type="submit" name = "your" value="Try Yours!" style="background-color:gray; cursor: pointer; font-size: 15px; font-family: verdana;">
+	<input type="submit" name = "bigregex" value="Big Regex" style="background-color:gray; cursor: pointer; font-size: 15px; font-family: verdana;">
+</form>
+
+<table style="height: 269px; margin-left: auto; margin-right: auto;" border="2" width="1000">
+<tbody>
+<form action="/verify/" method="get">
+<tr>
+	<td style="height: 50px; width: 300px ; text-align: center; font-family: verdana; font-size: 16px; color: gray">REGEX</td>
+	<td style="height: 50px; width: 400px ; text-align: center; font-family: verdana; font-size: 16px; color: gray">REQUIREMENT
+	</td>
+	<td style="height: 50px; width: 300px ; text-align: center; font-family: verdana; font-size: 16px; color: gray">SPECIFICATION</td>
+</tr>
+
+<tr>
+	<td style="height: 100px; width: 300px ;text-align: center; font-family: verdana; font-size: 16px";
+	name="getregex">
+	<div contenteditable>
+		{{ regex|safe }}
+	</div>
+	</td>
+	<td style="width: 400px ; text-align: center; font-family: verdana; font-size: 16px" rowspan="3";
+	name="getrequirement">
+	<div contenteditable>
+		{{ requirement|safe }}
+	</div>	
+	</td>
+	<td style="width: 300px ; text-align: center; font-family: verdana; font-size: 16px" rowspan="3";
+	name="getspecification">
+    <div contenteditable>
+			{{ specification|safe }}
+	</div>
+	</td>
+</tr>
+
+<tr>
+	<td style="height: 50px; width: 300px ;text-align: center; font-family: verdana; font-size: 16px; color: gray">TESTING</td>
+</tr>
+<tr>
+	<td style="height: 300px; width: 300px ;text-align: center; font-family: verdana; font-size: 16px"; 
+	name="gettest"; action="/update/" method="get" >
+	<div contenteditable>
+			{{ test|safe }}
+	</div>
+	</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+</html>

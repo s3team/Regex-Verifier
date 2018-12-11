@@ -1,0 +1,11 @@
+1    Test
+1    1
+1    1
+part1 does not contain letter "e"    part1 does not contain letter "e"
+part1 does not contain letter "e"    LET _part1 BE NOT e
+part2 contain only the letters "agde"    LET _part2 BE agde
+a contain only the letters "agde"    LET _a BE agde
+a contain only the letters "agde"    LET _a BE "agde"
+part1 contain word "dance"    LET _part1 BE WORD """
+part2 contain only lowercase letters    LET _part2 BE REPEAT SEVERAL LOWCASE
+part2 has words that contain 3 vowels    LET _part2 BE WORD HAS 3 ONE OF "aeiou"

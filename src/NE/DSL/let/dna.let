@@ -1,0 +1,7 @@
+let _part1 be "AC"
+let _part2 be one of "ATW"
+let _part3 be "T"
+let _part4 be one of "ACM"
+let _part5 be "A"
+let _part6 be one of "ACGTRYKMSWBDHVN"
+let _expression be _part1 and _part2 and _part3 and _part4 and _part5 and _part6

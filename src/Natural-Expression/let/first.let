@@ -1,0 +1,17 @@
+let _a be digit
+let _b be repeat 2 _a
+let _c be word
+let _d be _b or _c
+let _e be char
+let _f be one of 1 TO 8
+let _g be repeat zeromore _f
+let _h be _d and _e
+let _i be _h or _g
+let _j be word end "er"
+let _k be repeat zeromore lowcase
+let _l be word has 3 one of "aeiou"
+let _m be word begin "aaa"
+let _n be _j or _l
+let _o be _k and _m
+let _p be repeat zeromore _o
+let _q be _n and _p and _i

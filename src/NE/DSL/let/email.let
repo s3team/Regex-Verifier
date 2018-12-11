@@ -1,0 +1,13 @@
+let _character be "-" or letter or digit or "\."
+let _Username be repeat onemore _character
+let _option1 be repeat onemore blanks and "at" and repeat onemore blanks
+let _option2 be repeat zeromore blanks and "@" and repeat zeromore blanks
+let _option3 be repeat zeromore blanks and repeat 3 one of "\[\]@" and repeat zeromore blanks
+let _part2 be _option1 or _option2 or _option3
+let _domain be repeat onemore _character
+let _blanks be repeat zeromore blanks
+let _each be one of "\[\]dot\."
+let _option be repeat 3 TO 5 _each
+let _part5 be "dot" or "\." or _option
+let _TLD be repeat onemore char
+let _email be _Username and _part2 and _domain and _blanks and _part5 and _blanks and _TLD

@@ -1,0 +1,6 @@
+let _header be 'http" and ONEZERO "s" and "://"
+let _domainname be "regex.com"
+let _next be "/r/"
+let _validcharacter be letter or digit 
+let _id be REPEAT 1 TO 6 _validcharacter 
+let _url be _header and _domainname and _next and _id

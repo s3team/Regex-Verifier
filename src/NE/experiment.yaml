@@ -1,0 +1,29 @@
+"1": 
+  ["the expression contains at least 2 digits",
+  "[0-9]{3}",
+  "101 201 3m0 jjj 1020"
+  ]
+
+"2":
+  ["part1 only contains letter c, part3 only contains letter d,  part2 only contains letter a and b, The expression contains part1 and 'a' and part2 and 'b' and part3",
+  "c*a(a|b)*bd*",
+  "caaab cbbbd cabd cccabbd"
+  ]
+
+"3": 
+  ["part1 contains letter or dash, part2 is '@', part3 contains letter or point, the expression contains part1 and part2 and part3",
+  "(\\w[^0-9])+@(\\w)+",
+  "supportcenter@xyz.com supportcenter@xyz123.com support-center@xyz.com supportcenter123@xyz.com"
+  ]
+
+"4":
+  ["part1 contains 'ysmg' and any 6 characters, part2 is the hex 'x00x54', the expression contains part1 and part2",
+  "ymsg(x[0-9A-F]{2}){6}x00x54",
+  "ymsgx9Ax9Dx00x54 ymsgx9Dx00x54 ymsgx9Ax9D ymsgx9Axa9x00x54"
+  ]
+
+"5": 
+  ["part1 can be a sequence of anything, part2 is 'example' and point and 'org', the expression contains part1 and dot and part2",
+  ".*example.org",
+  "fooexample.org wwwxexample.org member.example.org www.member.org admin.example.org"
+  ]
